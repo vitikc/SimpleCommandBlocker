@@ -1,0 +1,16 @@
+name: SimpleCommandBlocker
+main: me.vitikc.scb.Main
+version: 1.2
+commands:
+    scb:
+        description: Shows information about plugin
+        usage: /<command>
+    scb add:
+        description: Blocks command
+        usage: /<command> command
+    scb remove:
+        description: Unlocks command
+        usage: /<command> command
+    scb reload:
+        description: Reloads data
+        usage: /<command>
