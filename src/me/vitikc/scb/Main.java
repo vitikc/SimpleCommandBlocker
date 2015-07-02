@@ -23,7 +23,7 @@ public class Main extends JavaPlugin{
 	//Plugin constants
 	public static String MainPermission = "scb.cmds";
 	public static String BypassPermission = "scb.bypass";
-	public static String pluginVersion = "1.2";
+	public static String pluginVersion = "1.2.1";
 	//Plugin announcer
 	public String SCBAnnouncer = ChatColor.DARK_AQUA+"[SCB]";
 	//Permissions
