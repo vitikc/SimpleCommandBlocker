@@ -48,6 +48,20 @@ public class Main extends JavaPlugin{
 		pm.addPermission(scbbypass);
 		
 		//Blocked cmds file
+		createDatabaseFile();
+		//Messages file
+		createMessagesFile();
+		//Load defaults
+		loadDefaultMessages();
+		loadUserMessages();
+	}
+	@Override
+	public void onDisable(){
+		saveDatabaseFile();
+		getLogger().info(ANSI_RED+"Simple Command Blocker disabled"+ANSI_RESET);
+		
+	}
+	private void createDatabaseFile(){
 		databaseFile = new File(getDataFolder(), "database.yml");
 		database = YamlConfiguration.loadConfiguration(databaseFile);
 		if (!databaseFile.exists()) {
@@ -58,7 +72,8 @@ public class Main extends JavaPlugin{
 				throw new IllegalStateException("Unable to create database file ", ex);
 			}
 		}
-		//Messages file
+	}
+	private void createMessagesFile(){
 		messagesFile = new File(getDataFolder(), "messages.yml");
 		messages = YamlConfiguration.loadConfiguration(messagesFile);
 		if (!messagesFile.exists()) {
@@ -69,15 +84,6 @@ public class Main extends JavaPlugin{
 				throw new IllegalStateException("Unable to create messages file ", ex);
 			}
 		}
-		//Load defaults
-		loadDefaultMessages();
-		loadUserMessages();
-	}
-	@Override
-	public void onDisable(){
-		saveDatabaseFile();
-		getLogger().info(ANSI_RED+"Simple Command Blocker disabled"+ANSI_RESET);
-		
 	}
 	private void loadDefaultMessages(){
 		setMessage("nopermission","&cYou don't have permission.");
@@ -127,6 +133,8 @@ public class Main extends JavaPlugin{
 	private void reloadMessageFile(){
 		messagesFile = new File(getDataFolder(),"messages.yml");
 		if(!messagesFile.exists()){
+			createMessagesFile();
+			loadDefaultMessages();
 			return;
 		}
 		messages = YamlConfiguration.loadConfiguration(messagesFile);
@@ -137,6 +145,7 @@ public class Main extends JavaPlugin{
 	private void reloadDatabaseFile(){
 		databaseFile = new File(getDataFolder(),"database.yml");
 		if(!databaseFile.exists()){
+			createDatabaseFile();
 			return;
 		}
 		database = YamlConfiguration.loadConfiguration(databaseFile);

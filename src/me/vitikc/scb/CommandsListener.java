@@ -30,7 +30,13 @@ public class CommandsListener implements Listener{
 	    	if (cmd.equalsIgnoreCase("/" + command)) {
 	    		event.setCancelled(true);
 	    		player.sendMessage(plugin.SCBAnnouncer+ChatColor.RED+Main.messageData.get("cmd") + ChatColor.WHITE + " " + command + " " + ChatColor.RED + Main.messageData.get("cmd_is_blocked"));
-	    	} 
+				return;
+	    	}
+			if(cmd.startsWith("/")&&cmd.toLowerCase().endsWith(command)){
+				event.setCancelled(true);
+				player.sendMessage(plugin.SCBAnnouncer + ChatColor.RED + Main.messageData.get("cmd") + ChatColor.WHITE + " " + command + " " + ChatColor.RED + Main.messageData.get("cmd_is_blocked"));
+				return;
+			}
 	    }
 	}
 }
