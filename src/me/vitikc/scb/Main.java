@@ -94,12 +94,12 @@ public class Main extends JavaPlugin{
 		setMessage("usage","&eUsage");
 		setMessage("usage_add","&f/scb add <command> <command2> ...");
 		setMessage("usage_remove","&f/scb remove <command> <command2> ...");
-        setMessage("usage_list","&f/scb list");
+        	setMessage("usage_list","&f/scb list");
 		setMessage("usage_reload","&f/scb reload");
 		setMessage("desc","&6Description");
 		setMessage("desc_add","&3Blocks command <command> <command2> ...");
 		setMessage("desc_remove","&3Unblocks command <command> <command2> ...");
-        setMessage("desc_list","&3Shows list of blocked commands");
+        	setMessage("desc_list","&3Shows list of blocked commands");
 		setMessage("desc_reload","&3Reloads data files");
 		setMessage("info_end","&cWrite command you want to block/unblock without '/'.");
 		setMessage("cmd","Command");
@@ -108,8 +108,8 @@ public class Main extends JavaPlugin{
 		setMessage("cmd_is_blocked","is blocked");
 		setMessage("cmd_not_blocked","not blocked by");
 		setMessage("cmd_has_unblocked","has been unblocked");
-        setMessage("no_blocked_cmds","&eThere no blocked commands in database.yml");
-        setMessage("blocked_cmds_list", "&6Next commands are blocked");
+ 		setMessage("no_blocked_cmds","&eThere no blocked commands in database.yml");
+        	setMessage("blocked_cmds_list", "&6Next commands are blocked");
 		setMessage("invalid_args","&cInvalid subcommand");
 		setMessage("can_senden_only_from","&cSorry, that command can be sended from player only");
 	}
@@ -174,11 +174,11 @@ public class Main extends JavaPlugin{
 		player.sendMessage(ChatColor.translateAlternateColorCodes('&', messageData.get("desc")) +": "+ ChatColor.translateAlternateColorCodes('&', messageData.get("desc_add")));
 		player.sendMessage(ChatColor.translateAlternateColorCodes('&', messageData.get("usage")) +": "+ ChatColor.translateAlternateColorCodes('&', messageData.get("usage_remove")));
 		player.sendMessage(ChatColor.translateAlternateColorCodes('&', messageData.get("desc")) +": "+ ChatColor.translateAlternateColorCodes('&', messageData.get("desc_remove")));
-        player.sendMessage(ChatColor.translateAlternateColorCodes('&', messageData.get("usage")) + ": " + ChatColor.translateAlternateColorCodes('&', messageData.get("usage_list")));
-        player.sendMessage(ChatColor.translateAlternateColorCodes('&', messageData.get("desc")) + ": " + ChatColor.translateAlternateColorCodes('&', messageData.get("desc_list")));
-        player.sendMessage(ChatColor.translateAlternateColorCodes('&', messageData.get("usage")) + ": " + ChatColor.translateAlternateColorCodes('&', messageData.get("usage_reload")));
-        player.sendMessage(ChatColor.translateAlternateColorCodes('&', messageData.get("desc")) + ": " + ChatColor.translateAlternateColorCodes('&', messageData.get("desc_reload")));
-        player.sendMessage(ChatColor.translateAlternateColorCodes('&', messageData.get("info_end")));
+        	player.sendMessage(ChatColor.translateAlternateColorCodes('&', messageData.get("usage")) + ": " + ChatColor.translateAlternateColorCodes('&', messageData.get("usage_list")));
+        	player.sendMessage(ChatColor.translateAlternateColorCodes('&', messageData.get("desc")) + ": " + ChatColor.translateAlternateColorCodes('&', messageData.get("desc_list")));
+        	player.sendMessage(ChatColor.translateAlternateColorCodes('&', messageData.get("usage")) + ": " + ChatColor.translateAlternateColorCodes('&', messageData.get("usage_reload")));
+        	player.sendMessage(ChatColor.translateAlternateColorCodes('&', messageData.get("desc")) + ": " + ChatColor.translateAlternateColorCodes('&', messageData.get("desc_reload")));
+        	player.sendMessage(ChatColor.translateAlternateColorCodes('&', messageData.get("info_end")));
 		player.sendMessage(ChatColor.YELLOW+"----------------------------------------------");
 	}
 	private void blockCommand(Player player, String arg){
