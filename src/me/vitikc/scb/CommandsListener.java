@@ -20,7 +20,7 @@ public class CommandsListener implements Listener{
 	@EventHandler(priority = EventPriority.HIGH)
 	public void onPlayerCommandPreprocessEvent(PlayerCommandPreprocessEvent event){
 		Player player =  event.getPlayer();
-		if(player.hasPermission(plugin.scbbypass)){
+		if(player.hasPermission(plugin.BypassPermission)){
 			return;
 		}
 		List<String> cmds = plugin.database.getStringList("blocked_cmds");
