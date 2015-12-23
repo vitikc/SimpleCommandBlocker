@@ -28,7 +28,7 @@ public class SCBCommandListener implements Listener{
 		mm = plugin.getMessageManager();
 		dm = plugin.getDatabaseManager();
 		database = dm.getDatabaseFileConfiguration();
-		SCBAnnouncer = plugin.announcer;
+		SCBAnnouncer = SCBMain.announcer;
 	}
 	@EventHandler(priority = EventPriority.HIGHEST)
 	public void onPlayerCommandPreprocessEvent(PlayerCommandPreprocessEvent event){
@@ -56,13 +56,13 @@ public class SCBCommandListener implements Listener{
 		StringBuilder message = new StringBuilder();
 		message.append(SCBAnnouncer)
 				.append(ChatColor.RED)
-				.append(mm.messageData.get("cmd"))
+				.append(SCBMessageManager.messageData.get("cmd"))
 				.append(ChatColor.WHITE)
 				.append(" ")
 				.append(command)
 				.append(" ")
 				.append(ChatColor.RED)
-				.append(mm.messageData.get("cmd_is_blocked"));
+				.append(SCBMessageManager.messageData.get("cmd_is_blocked"));
 		return message.toString();
 	}
 }
