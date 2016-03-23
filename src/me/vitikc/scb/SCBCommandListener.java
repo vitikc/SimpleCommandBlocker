@@ -42,27 +42,14 @@ public class SCBCommandListener implements Listener{
 	    	String cmd=msgarr[0];
 			if (cmd.equalsIgnoreCase("/" + command)) {
 	    		event.setCancelled(true);
-	    		player.sendMessage(generateMessage(command));
+	    		player.sendMessage(mm.generateMessage("cmd", command, "cmd_is_blocked"));
 				return;
 	    	}
 			if(cmd.startsWith("/")&&cmd.toLowerCase().endsWith(command)){
 				event.setCancelled(true);
-				player.sendMessage(generateMessage(command));
+				player.sendMessage(mm.generateMessage("cmd", command, "cmd_is_blocked"));
 				return;
 			}
 	    }
-	}
-	private String generateMessage(String command){
-		StringBuilder message = new StringBuilder();
-		message.append(SCBAnnouncer)
-				.append(ChatColor.RED)
-				.append(SCBMessageManager.messageData.get("cmd"))
-				.append(ChatColor.WHITE)
-				.append(" ")
-				.append(command)
-				.append(" ")
-				.append(ChatColor.RED)
-				.append(SCBMessageManager.messageData.get("cmd_is_blocked"));
-		return message.toString();
 	}
 }

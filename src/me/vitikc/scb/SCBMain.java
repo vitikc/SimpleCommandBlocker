@@ -16,6 +16,7 @@ public class SCBMain extends JavaPlugin{
 	public static final String ANSI_RESET = "\u001B[0m";
 	public static final String ANSI_RED = "\u001B[31m";
 	public static final String ANSI_GREEN = "\u001B[32m";
+	public static String author = "Vitikc";
 	public static String version = "1.3.0";
 	public static String announcer = ChatColor.DARK_AQUA+"[SCB]";
 	private SCBMessageManager mm;
