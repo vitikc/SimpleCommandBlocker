@@ -14,7 +14,7 @@ commands:
     scb list:
         description: Shows list of blocked commands
         usage: /<command>
-    scb hel[:
+    scb help:
         description: Shows help message
         usage: /<command>
     scb reload:
