@@ -62,59 +62,58 @@ public class CommandExecutor implements org.bukkit.command.CommandExecutor {
     }
 
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if(sender instanceof Player) {
-            if (sender.hasPermission("scb.allow") || sender.isOp()) {
-                //Checking args
-                if (args.length != 0) {
-                    switch (args[0]) {
-                        case "add":
-                            //Adding command to blocked list
-                            if (args.length == 2) {
-                                blockCommand(sender, args[1]);
-                            } else if (args.length < 2) {
-                                sender.sendMessage(mm.generateUsageMessage("usage_add"));
-                            } else {
-                                for (int i = 1; i < args.length; i++) {
-                                    blockCommand(sender, args[i]);
-                                }
+        if (sender.hasPermission("scb.allow") || sender.isOp()) {
+            //Checking args
+            if (args.length != 0) {
+                switch (args[0]) {
+                    case "add":
+                        //Adding command to blocked list
+                        if (args.length == 2) {
+                            blockCommand(sender, args[1]);
+                        } else if (args.length < 2) {
+                            sender.sendMessage(mm.generateUsageMessage("usage_add"));
+                        } else {
+                            for (int i = 1; i < args.length; i++) {
+                                blockCommand(sender, args[i]);
                             }
-                            break;
-                        case "remove":
-                            //Removing command from blocked list
-                            if (args.length == 2) {
-                                unblockCommand(sender, args[1]);
-                            } else if (args.length < 2) {
-                                sender.sendMessage(mm.generateUsageMessage("usage_remove"));
-                            } else {
-                                for (int i = 1; i < args.length; i++) {
-                                    unblockCommand(sender, args[i]);
-                                }
+                        }
+                        break;
+                    case "remove":
+                        //Removing command from blocked list
+                        if (args.length == 2) {
+                            unblockCommand(sender, args[1]);
+                        } else if (args.length < 2) {
+                            sender.sendMessage(mm.generateUsageMessage("usage_remove"));
+                        } else {
+                            for (int i = 1; i < args.length; i++) {
+                                unblockCommand(sender, args[i]);
                             }
-                            break;
-                        case "reload":
-                            //Reloading messages and database
-                            dm.reloadDatabaseFile();
-                            mm.reloadMessageFile();
-                            sender.sendMessage(mm.generateColoredMessage("data_reloaded"));
-                            break;
-                        case "list":
-                            //Sending list of blocked commands
-                            loadBlockedCommandsList(sender);
-                            break;
-                        case "help":
-                            //Sending list of blocked commands
-                            mm.printHelp(sender);
-                            break;
-                        default:
-                            //Sending an invalid args message and showing help
-                            sender.sendMessage(mm.generateColoredMessage("invalid_args"));
-                            break;
-                    }
-                } else
-                    mm.printHelp(sender);
+                        }
+                        break;
+                    case "reload":
+                        //Reloading messages and database
+                        dm.reloadDatabaseFile();
+                        mm.reloadMessageFile();
+                        sender.sendMessage(mm.generateColoredMessage("data_reloaded"));
+                        break;
+                    case "list":
+                        //Sending list of blocked commands
+                        loadBlockedCommandsList(sender);
+                        break;
+                    case "help":
+                        //Sending list of blocked commands
+                        mm.printHelp(sender);
+                        break;
+                    default:
+                        //Sending an invalid args message and showing help
+                        sender.sendMessage(mm.generateColoredMessage("invalid_args"));
+                        break;
+                }
             } else
-                sender.sendMessage(mm.generateColoredMessage("nopermission"));
-        }
-        return true;
+                mm.printHelp(sender);
+        } else
+            sender.sendMessage(mm.generateColoredMessage("nopermission"));
+
+    return true;
     }
 }

@@ -1,6 +1,7 @@
 package me.vitikc.scb;
 
 import java.util.List;
+import java.util.regex.Pattern;
 
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
@@ -33,9 +34,10 @@ public class CommandListener implements Listener{
         List<String> cmds = database.getStringList("blocked_cmds");
         for (String command : cmds) {
             String[] msgarr = event.getMessage().split("\\s+");
-            String cmd = msgarr[0];
-            String regex = String.format("[:/](%s)", command);
-            if (cmd.matches(regex)) {
+            String cmd = msgarr[0] + " ";
+            String regex = String.format("[:/](%s )", command);
+            if (Pattern.compile(regex).matcher(cmd).find()) {
+
                 event.setCancelled(true);
                 player.sendMessage(mm.generateMessage("cmd", command, "cmd_is_blocked"));
                 return;
